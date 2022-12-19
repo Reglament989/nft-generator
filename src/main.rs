@@ -12,7 +12,7 @@ mod utils;
 async fn main() -> anyhow::Result<()> {
     pretty_env_logger::init();
     let config: Config = serde_json::from_str(&fs::read_to_string(
-        "/home/h/work/node/art-engine/nft-generator/config.json",
+        std::env::current_dir()?.join("config.json"),
     )?)?;
     info!("Parsed config");
     let mut factory = config.factory.clone();
